@@ -1,6 +1,9 @@
-def inputIsFalse(a, b):
+def inputIsFalse(a, b, board):
     if a < 0 or a > 2 or b < 0 or b > 2:
         print("Wrong input! Should be either 0, 1, or 2. Pls type again!")
+        return True
+    elif board.board[a][b] != "-":
+        print("That location is already marked. Please pick another one!")
         return True
     else:
         return False
@@ -28,7 +31,7 @@ class Player:
            self.sign = sign
 
 def updateBoard(x, y, boardObj):
-    boardObj.board[x][y] = player
+    print(" not yet implemented ")    
 
 print("Welcome to Boter, Kaas en Eieren. To play, first enter two user names.")
 p1 = Player(input("user 1 (who will play as X:"), "X")
@@ -44,7 +47,7 @@ finished = False
 while (not finished):
     u1x = int(input(p1.name + " x: "))
     u1y = int(input(p1.name + " y: "))
-    while inputIsFalse(u1x, u1y):
+    while inputIsFalse(u1x, u1y, b1):
         u1x = int(input("user 1 x: "))
         u1y = int(input("user 1 y: "))
    
@@ -56,7 +59,7 @@ while (not finished):
 
     u2x = int(input(p2.name + " x: "))
     u2y = int(input(p2.name + " y: "))
-    while inputIsFalse(u2x, u2y):
+    while inputIsFalse(u2x, u2y, b1):
         u2x = int(input("User 2 x: "))
         u2y = int(input("User 2 y: "))
 
