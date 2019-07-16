@@ -3,8 +3,6 @@ def inputIsFalse(a, b):
         print("Wrong input! Should be either 0, 1, or 2. Pls type again!")
         return True
     else:
-        print("all ok")
-        print( a < 0 or a > 2 or b < 0 or b > 2 )
         return False
 
 class Board:
@@ -24,25 +22,31 @@ class Board:
                    self.board[2][2]
         )) 
 
+class Player:
+    def __init__(self, name, sign):
+           self.name = name
+           self.sign = sign
+
+def updateBoard(x, y, boardObj):
+    boardObj.board[x][y] = player
+
 print("Welcome to Boter, Kaas en Eieren. To play, first enter two user names.")
-u1 = input("user 1 (who will play as X:")
-u2 = input("user 2 (who will play as O:")
+p1 = Player(input("user 1 (who will play as X:"), "X")
+p2 = Player(input("user 2 (who will play as O:"), "O")
 
 b1 = Board()
 print("Initial board:")
 b1.getData()
 
-print(inputIsFalse(2, 100))
-
 print("Enter two coordinates (x,y, 0-indexed) to place a marker.")
 
 finished = False
 while (not finished):
-    u1x = int(input("User 1 x:"))
-    u1y = int(input("User 1 y:"))
+    u1x = int(input(p1.name + " x: "))
+    u1y = int(input(p1.name + " y: "))
     while inputIsFalse(u1x, u1y):
-        u1x = int(input("User 1 x:"))
-        u1y = int(input("User 1 y:"))
+        u1x = int(input("user 1 x: "))
+        u1y = int(input("user 1 y: "))
    
     
     # b1 = updateBoard(u1x, u1y)
@@ -50,11 +54,11 @@ while (not finished):
 
     b1.getData()
 
-    u2x = int(input("User 2 x:"))
-    u2y = int(input("User 2 y:"))
+    u2x = int(input(p2.name + " x: "))
+    u2y = int(input(p2.name + " y: "))
     while inputIsFalse(u2x, u2y):
-        u2x = int(input("User 2 x:"))
-        u2y = int(input("User 2 y:"))
+        u2x = int(input("User 2 x: "))
+        u2y = int(input("User 2 y: "))
 
     # b1 = updateBoard(u2x, u2y)
     # finished = check(b1)
