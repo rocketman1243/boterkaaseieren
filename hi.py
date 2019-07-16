@@ -32,6 +32,9 @@ class Player:
 
 def updateBoard(x, y, boardObj, player):
    boardObj.board[x][y] = player.sign 
+
+def checkWinner(b):
+    print("participating is more important than winning!")
         
 print("Welcome to Boter, Kaas en Eieren. To play, first enter two user names.")
 p1 = Player(input("user 1 (who will play as X:"), "X")
@@ -43,6 +46,7 @@ b1.getData()
 
 print("Enter two coordinates (x,y, 0-indexed) to place a marker.")
 
+winner = "-"
 finished = False
 while (not finished):
     u1x = int(input(p1.name + " x: "))
