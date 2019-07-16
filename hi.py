@@ -30,9 +30,9 @@ class Player:
            self.name = name
            self.sign = sign
 
-def updateBoard(x, y, boardObj):
-    print(" not yet implemented ")    
-
+def updateBoard(x, y, boardObj, player):
+   boardObj.board[x][y] = player.sign 
+        
 print("Welcome to Boter, Kaas en Eieren. To play, first enter two user names.")
 p1 = Player(input("user 1 (who will play as X:"), "X")
 p2 = Player(input("user 2 (who will play as O:"), "O")
@@ -52,7 +52,7 @@ while (not finished):
         u1y = int(input("user 1 y: "))
    
     
-    # b1 = updateBoard(u1x, u1y)
+    updateBoard(u1x, u1y, b1, p1)
     # finished = check(b1)
 
     b1.getData()
@@ -63,7 +63,7 @@ while (not finished):
         u2x = int(input("User 2 x: "))
         u2y = int(input("User 2 y: "))
 
-    # b1 = updateBoard(u2x, u2y)
+    updateBoard(u2x, u2y, b1, p2)
     # finished = check(b1)
     
     b1.getData()
