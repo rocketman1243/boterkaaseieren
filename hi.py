@@ -2,7 +2,7 @@ def inputIsFalse(a, b, board):
     if a < 0 or a > 2 or b < 0 or b > 2:
         print("Wrong input! Should be either 0, 1, or 2. Pls type again!")
         return True
-    elif board.board[a][b] != "-":
+    elif board.board[b][a] != "-":
         print("That location is already marked. Please pick another one!")
         return True
     else:
@@ -30,8 +30,8 @@ class Player:
            self.name = name
            self.sign = sign
 
-def updateBoard(x, y, boardObj, player):
-   boardObj.board[x][y] = player.sign 
+def updateBoard(y, x, boardObj, player):
+   boardObj.board[y][x] = player.sign 
 
 # tuples to indicate certain locations
 # left upper, left middle, left lower
@@ -72,41 +72,43 @@ def checkWinner(board):
     return False
 
 print("Welcome to Boter, Kaas en Eieren. To play, first enter two user names.")
-p1 = Player(input("user 1 (who will play as X:"), "X")
-p2 = Player(input("user 2 (who will play as O:"), "O")
+p1 = Player(input("user 1 (who will play as X): "), "X")
+p2 = Player(input("user 2 (who will play as O): "), "O")
 
 b1 = Board()
 print("Initial board:")
 b1.getData()
 
-print("Enter two coordinates (x,y, 0-indexed) to place a marker.")
+print("Enter coordinates one by one. First the X, then the Y.")
 
 winner = "-"
 finished = False
 while (not finished):
-    u1x = int(input(p1.name + " x: "))
-    u1y = int(input(p1.name + " y: "))
+    u1x = int(input(p1.name + " X: "))
+    u1y = int(input(p1.name + " Y: "))
     while inputIsFalse(u1x, u1y, b1):
-        u1x = int(input(p1.name + " x: "))
-        u1y = int(input(p1.name + " y: "))
+        u1x = int(input(p1.name + " X: "))
+        u1y = int(input(p1.name + " Y: "))
    
     
-    updateBoard(u1x, u1y, b1, p1)
+    updateBoard(u1y, u1x, b1, p1)
     if checkWinner(b1):
         print(p1.name + " has won!!")
+        b1.getData()
         break
 
     b1.getData()
 
-    u2x = int(input(p2.name + " x: "))
-    u2y = int(input(p2.name + " y: "))
+    u2x = int(input(p2.name + " X: "))
+    u2y = int(input(p2.name + " Y: "))
     while inputIsFalse(u2x, u2y, b1):
-        u2x = int(input(p2.name + " x: "))
-        u2y = int(input(p2.name + " y: "))
+        u2x = int(input(p2.name + " X: "))
+        u2y = int(input(p2.name + " Y: "))
 
-    updateBoard(u2x, u2y, b1, p2)
+    updateBoard(u2y, u2x, b1, p2)
     if checkWinner(b1):
         print(p2.name + " has won!!")
+        b1.getData()
         break
     
     b1.getData()
