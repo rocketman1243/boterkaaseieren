@@ -33,9 +33,35 @@ class Player:
 def updateBoard(x, y, boardObj, player):
    boardObj.board[x][y] = player.sign 
 
+# tuples to indicate certain locations
+# left upper, left middle, left lower
+lu = (0,0) 
+lm = (1,0)
+ll = (2,0)
+# middle upper, middle middle, middle lower
+mu = (0,1) 
+mm = (1,1)
+ml = (2,1)
+# right upper, right middle, right lower
+ru = (0,2) 
+rm = (1,2)
+rl = (2,2)
+
+# tuples to indicate groups of tuples that lie in a straight line
+# naming: from _ _ to _ _ . ex: from left upper to right lower: lurl
+lull = (lu, lm, ll)
+muml = (mu, mm, ml)
+rurl = (ru, rm, rl)
+luru = (lu, mu, ru)
+lmrm = (lm, mm, rm)
+llrl = (ll, ml, rl)
+lurl = (lu, mm, rl)
+llru = (ll, mm, ru)
+
 def checkWinner(b):
     print("participating is more important than winning!")
         
+
 print("Welcome to Boter, Kaas en Eieren. To play, first enter two user names.")
 p1 = Player(input("user 1 (who will play as X:"), "X")
 p2 = Player(input("user 2 (who will play as O:"), "O")
