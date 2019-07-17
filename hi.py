@@ -61,9 +61,15 @@ llru = (ll, mm, ru)
 # tuple of winner groups of tuples
 winners = (lull, muml, rurl, luru, lmrm, llrl, lurl, llru)
 
-def checkWinner(b):
-    print("participating is more important than winning!")
-        
+def gb(tup, board):
+    return board.board[tup[0]][tup[1]]
+
+def checkWinner(board):
+    b = board.board                
+    for t in winners:
+        if gb(t[0], board) == gb(t[1], board) == gb(t[2], board) != "-":
+            return True
+    return False
 
 print("Welcome to Boter, Kaas en Eieren. To play, first enter two user names.")
 p1 = Player(input("user 1 (who will play as X:"), "X")
@@ -81,23 +87,27 @@ while (not finished):
     u1x = int(input(p1.name + " x: "))
     u1y = int(input(p1.name + " y: "))
     while inputIsFalse(u1x, u1y, b1):
-        u1x = int(input("user 1 x: "))
-        u1y = int(input("user 1 y: "))
+        u1x = int(input(p1.name + " x: "))
+        u1y = int(input(p1.name + " y: "))
    
     
     updateBoard(u1x, u1y, b1, p1)
-    # finished = check(b1)
+    if checkWinner(b1):
+        print(p1.name + " has won!!")
+        break
 
     b1.getData()
 
     u2x = int(input(p2.name + " x: "))
     u2y = int(input(p2.name + " y: "))
     while inputIsFalse(u2x, u2y, b1):
-        u2x = int(input("User 2 x: "))
-        u2y = int(input("User 2 y: "))
+        u2x = int(input(p2.name + " x: "))
+        u2y = int(input(p2.name + " y: "))
 
     updateBoard(u2x, u2y, b1, p2)
-    # finished = check(b1)
+    if checkWinner(b1):
+        print(p2.name + " has won!!")
+        break
     
     b1.getData()
 
