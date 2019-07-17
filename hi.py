@@ -58,6 +58,9 @@ llrl = (ll, ml, rl)
 lurl = (lu, mm, rl)
 llru = (ll, mm, ru)
 
+# tuple of winner groups of tuples
+winners = (lull, muml, rurl, luru, lmrm, llrl, lurl, llru)
+
 def checkWinner(b):
     print("participating is more important than winning!")
         
